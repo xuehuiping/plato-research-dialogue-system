@@ -264,9 +264,12 @@ def run(config):
                              db_creator.check_float(e) else e for e in entry]
 
                     # Remove non-ascii characters
+                    # entry = \
+                    #     [str(''.join(i for i in e if
+                    #                  ord(i) < 128)).replace('\"', '')
+                    #      for e in entry]
                     entry = \
-                        [str(''.join(i for i in e if
-                                     ord(i) < 128)).replace('\"', '')
+                        [str(''.join(i for i in e )).replace('\"', '')
                          for e in entry]
                     entry = [e.replace('\'', '') for e in entry]
 
@@ -298,3 +301,8 @@ def run(config):
                                system_requestable_slots)
 
     print(f'{table_name} ontology created!')
+
+
+
+if __name__ == '__main__':
+    run('/Users/huihui/git/ai/for_xuehp/xmzx/task_with_plato/example_zh/create_flowershop_domain.yaml')
